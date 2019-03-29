@@ -20,7 +20,7 @@ Part of the **ESP-MONITOR** project is also repository for Balena multicontainer
 Often we want to monitor current consumption of our devices. We usually want to do this over a longer periods of time. Maybe we are unsure how some tasks will impact our current consumption and also if our devices really go into sleep mode for periods of time that we intend. At the same time we migh want to catch any serial debug data that our device outputs.
 
 ### Perfect job for ESP-MONITOR!
-![Introduction](pictures/Introduction.jpg)
+![Introduction](pictures/introduction.jpg)
 
 **ESP-MONITOR** is a device that is measuring current consumption and voltage on the device you are monitoring. At the same time it is listening for messages over UART serial connection.
 When enough samples are made, we use them to calculate maximum, minimum and average values and standard deviation. 
@@ -33,7 +33,7 @@ That way we can see if several of our monitored devices are behaving as expected
 
 Download or clone the whole repository from Github.
 
-Use command: `git clone NAME####` in git bash. 
+Use command: `git clone https://github.com/SkobecSlo/ESP-MONITOR.git` in git bash. 
 
 To compile and upload code to our ESP-MONITOR we will need [Visual Studio Code](https://code.visualstudio.com) with **PlatformIO** extension. 
 **Visual Studio Code** is a source-code editor developed by Microsoft for Windows, Linux and macOS. It includes support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.
