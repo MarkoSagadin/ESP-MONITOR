@@ -1,0 +1,31 @@
+PCAD Importer Log
+Project : INA219.LibPkg
+
+Section : C:\Users\MarkoSagadin\Desktop\Irnas\ESP-MONITOR\INA219.lia
+    Section : PCB Library - INA219.PcbLib
+        Section : Load Messages
+            Warning - 1 : Skipping Token INA219 On Line 211
+            Warning - 1 : Skipping Token attachedSymbol On Line 328
+        EndSection
+
+        Section : Import Messages
+        EndSection
+    EndSection
+
+    Section : SCH Library - INA219.SchLib
+        Section : Parsing Messages
+            Warning - 1 : Skipping Token padStyleDef On Line 9
+            Warning - 1 : Skipping Token multiLayer On Line 84
+            Warning - 1 : Skipping Token layerContents On Line 94
+            Warning - 1 : Skipping Token layerContents On Line 150
+            Warning - 1 : Skipping Token layerContents On Line 206
+            Warning - 1 : Skipping Token isVisible On Line 297
+            Warning - 1 : Skipping Token isVisible On Line 298
+            Warning - 1 : Skipping Token isVisible On Line 299
+            Warning - 1 : Skipping Token isVisible On Line 300
+        EndSection
+
+        Section : Generating SCH Library - INA219.SchLib
+        EndSection
+    EndSection
+EndSection
