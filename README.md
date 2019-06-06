@@ -158,7 +158,7 @@ If you add to the end of public url **/node-red/ui** you will arrive at Node-Red
 
 ### <a name="Setup-Grafana"></a> Setup Grafana  
 
-1. Go to your public device url now and login into Grafana with username: **root** and password **root**. 
+1. Go to your public device url now and login into Grafana with username: **admin** and password **admin**. 
 2. Click *Gear icon -> Data sources* 
 3. Click big icon with Monitor title and Influxdb logo.
 4. All details should be filled in, scroll down and click save and test button. If everything is ok you will get conformation message.
