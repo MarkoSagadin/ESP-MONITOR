@@ -132,21 +132,23 @@ void reconnect(String clientId)
 // Function fills recvbuffer with received UART data
 int receivedUartData()
 {
-    int i = 0;
     if (Serial.available() == 0)
-        return 0;
+        return 0;   // Buffer is empty, exit function
     else
     {
-        delay(10); // Without delay code thinks that it gets only first character first
-                   // and then the rest of the string, final result is that they are sent over mqtt seperatly.
-                   // A short delay prevents that. 
         while (Serial.available() > 0)
         {
-            recvbuffer[i] = Serial.read();
-            i++;
+            Serial.readBytesUntil('\r', recvbuffer, SIZE);  //Should be \r\n, with Arduino's Serial.println() function should work fine
         }
-        recvbuffer[i] = '\0';
-        return 1;
+        
+        //Serial.print(recvbuffer);
+
+        // Flush buffer
+        while (Serial.available() > 0)
+        {
+            Serial.read();
+        }
+        return 1;   // Buffer has some data, exit function
     }
 }
 
@@ -158,7 +160,7 @@ void setup()
 
     // Setup power cycle pin for INA219, led on esp module will serve as indicator
     pinMode(POWER_CYCLE, OUTPUT);
-    digitalWrite(POWER_CYCLE, LOW);
+    digitalWrite(POWER_CYCLE, HIGH);
     pinMode(BUILT_IN_LED, OUTPUT);
     digitalWrite(BUILT_IN_LED, LOW);
 
