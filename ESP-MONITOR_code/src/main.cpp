@@ -22,7 +22,7 @@
 
 const char *ssid = "ESP-MONITOR";           // AP SSID
 const char *password = "ESP-MONITOR";       // AP Password
-const char *mqtt_server = "192.168.13.130"; // IP of MQTT broker
+const char *mqtt_server = "192.168.13.121"; // IP of MQTT broker
 
 // Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
 #define OLED_RESET (16) // Reset pin for OLED, if not used set it to -1
@@ -157,6 +157,7 @@ void setup()
     Serial.begin(115200);
     EEPROM.begin(512);
     WiFi.mode(WIFI_AP_STA);
+    Serial.println("Hello!");
 
     // Setup power cycle pin for INA219, led on esp module will serve as indicator
     pinMode(POWER_CYCLE, OUTPUT);
@@ -185,12 +186,7 @@ void setup()
     clientId.toCharArray(mqttId, 15);
 
     // Initialize connection with OLED display
-    if (!initDisplay())
-    {
-        Serial.println(F("SSD1306 allocation failed"));
-        while (1);      // Don't proceed, loop forever
-            
-    }
+    initDisplay();
 
     // Greet user on display
     greetScreenDisplay();
@@ -216,6 +212,7 @@ void setup()
         // Display instructions for connection
         instructConnDisplay();
 
+        Serial.println("Reset me when ready!");
         while (1)
         {
             // Loop here to handle web requests, user should reset ESP
@@ -268,6 +265,7 @@ void setup()
         Client.setServer(mqtt_server, 1883);
         Client.setCallback(callback);
         flashErase.attach(0.01, debounceUserButton);    // Setup and run timer interrupt 
+        Serial.println("Ready to listen!");
     }
 }
 
@@ -307,7 +305,6 @@ void loop()
         as we already need more than a second to collect all samples, get the values and send them over MQTT.
         If this rate of sending messages needs to be changed for any reason, we suggest adjust the size of 
         currentArray with macro CURRENT_ARRAY_SIZE and adding a delay at the end of main loop. */
-
         // Calculate max, min, avg, std values and save them to struct to struct
         struct mqttData currentData = updateData(currentArray, CURRENT_ARRAY_SIZE, CURRENT_DATA);
         struct mqttData voltageData = updateData(voltageArray, VOLTAGE_ARRAY_SIZE, VOLTAGE_DATA);
